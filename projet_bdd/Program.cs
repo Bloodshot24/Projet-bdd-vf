@@ -5,10 +5,9 @@ namespace SalleSportApp
 {
     internal class Program
     {
-        // Chaîne de connexion à adapter :
-        // - Server : ton serveur (localhost, 127.0.0.1, etc.)
-        // - Database : tu peux mettre "" si le script contient CREATE DATABASE + USE
-        // - User Id / Password : ton compte MySQL
+        
+        // Server : le nom du serveur (localhost ou 127.0.0.1)
+        // User Id / Password : le compte MySQL
         private const string connectionString =
             "Server=localhost;User Id=root;Password=monMotDePasse;";
 
@@ -18,7 +17,7 @@ namespace SalleSportApp
         {
             try
             {
-                // 1) Charger le script SQL
+                // on charge le script sql
                 string exeDir = AppDomain.CurrentDomain.BaseDirectory;
                 string sqlPath = Path.Combine(exeDir, sqlFileName);
 
@@ -30,7 +29,7 @@ namespace SalleSportApp
 
                 string sqlScript = File.ReadAllText(sqlPath);
 
-                // 2) Exécuter le script (création BDD + tables + INSERT)
+                // on execute le script (création BDD + tables + INSERT)
                 ExecuteSqlScript(sqlScript);
 
                 Console.WriteLine("Script SQL exécuté avec succès.");
